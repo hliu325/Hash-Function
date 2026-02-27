@@ -1,3 +1,14 @@
+// #include <iostream>
+// #include <string>
+// #include "hash.h"
+
+// using namespace std;
+
+// int hash_function(string text) {
+//     // Implement your own hash function here
+//     return 1;
+// }
+
 #include <string>
 #include <iostream>
 #include <cmath>
@@ -52,7 +63,7 @@ int HashTable::hash(std::string input) {
     }
 
     // FOR DEBUGGING REMOVE LATER:
-    std::cout << "total : " << total << std::endl;
+    // std::cout << "total : " << total << std::endl;
 
     return total % slots;
 }
@@ -75,14 +86,14 @@ void HashTable::formHashTable(std::string* text, int size) {
         std::string input = text[i];
         insertKey(input);
     }
-    std::cout << std::endl;
+    
     dispHashTable();
 }
 
 void HashTable::dispHashTable() {
     // 3a) display contents:
     std::cout << "==== Printing the contents of the first 5 slots ====" << std::endl;
-    for (int i = 0; i < slots; i++) {
+    for (int i = 0; i < 5; i++) {
         std::cout << "Slot " << i << ": ";
         // IF NULL DO NOT PRINT CONTENTS:
         if (stackArray[i] != NULL) {
@@ -104,11 +115,13 @@ void HashTable::dispHashTable() {
         }
         else
         {
-            sum = sum + stackArray[i]->getSize();
+            sum = sum + stackArray[i]->getSize();   
             std::cout << stackArray[i]->getSize();
         }
         std::cout << std::endl;
     }
+
+    std::cout << std::endl;
 
     // 3c) standard deviation
     double sum2 = 0;
@@ -130,15 +143,3 @@ void HashTable::dispHashTable() {
     std::cout << "==== Printing the standard deviation ====" << std::endl;
     std::cout << std << std::endl;
 }
-
-
-
-
-
-
-
-
-
-
-
-

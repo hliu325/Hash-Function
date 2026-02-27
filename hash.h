@@ -1,3 +1,15 @@
+// #include <iostream>
+// #include <string>
+// #include <cmath>
+// // You are free to use additional libraries as long as it's not PROHIBITED per instruction.
+
+// using namespace std;
+
+// struct Node {
+//     Node* next;
+//     string key;
+// }
+
 #ifndef HASH_H
 #define HASH_H
 
@@ -52,8 +64,5 @@ class HashTable {
         Stack** stackArray;
         int slots; 
 };
-
-
-
 
 #endif
