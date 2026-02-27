@@ -12,6 +12,8 @@ int main() {
     // cout << test.getSize() << endl;
     // test.dispStack();
 
+    cout << "this is a change" << endl;
+    
     string inputs[9] = {"apple", "amazon", "Amazon", "Applebee", "banana", "barbaric", "boring", "Boeing", "elephant"};
     HashTable test(5);
     test.formHashTable(inputs, 9);

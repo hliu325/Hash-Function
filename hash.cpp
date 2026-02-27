@@ -81,6 +81,7 @@ void HashTable::formHashTable(std::string* text, int size) {
 
 void HashTable::dispHashTable() {
     // 3a) display contents:
+    std::cout << "==== Printing the contents of the first 5 slots ====" << std::endl;
     for (int i = 0; i < slots; i++) {
         std::cout << "Slot " << i << ": ";
         // IF NULL DO NOT PRINT CONTENTS:
@@ -91,6 +92,8 @@ void HashTable::dispHashTable() {
     }
 
     std::cout << std::endl;
+
+    std::cout << "==== Printing the slot lengths ====" << std::endl;
 
     // 3b) Print Lengths:
     int sum = 0;
