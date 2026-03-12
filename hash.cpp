@@ -53,19 +53,39 @@ void Stack::dispStack() {
     }
 }
 
-// HASH TABLE:
+// === HASH TABLE: ===
+
+// ORIGINAL HASH FUNCTION : BACK TRACK ON THIS IF ALL ELSE FAILS
+// int HashTable::hash(std::string input) {
+//     // CONVERT TO ASCII - take string(int) MOD slots
+//     int total = 0;
+//     for (int i = 0; i < input.length(); i++) {
+//         char letter = input[i]; 
+//         total = total + letter;
+//     }
+
+//     return total % slots;
+// }
+
+// === NEW HASH FUNCTION ===
+// basically, the idea is to iterate through input string and shift each character's ASCII value by its position.
+// this makes it so that the order of chars actually matters, as opposed to simply adding them. i.e 'ab' and 'ba' are different.
 int HashTable::hash(std::string input) {
-    // CONVERT TO ASCII - take string(int) MOD slots
-    int total = 0;
+    long total = 0;
+    long base = 6967;
     for (int i = 0; i < input.length(); i++) {
-        char letter = input[i]; 
-        total = total + letter;
+        
+        // % 63 is a precaution for if i gets to big for large strings. 
+        // it also maximizes the spread of bits, making the most out of the 64 bits given by long.
+        // i + 1 is a precaution for i = 0. creates a very slight offset through every iteration of i.
+        total = (base % (i + 1)) + total + ((long)input[i] << (i % 63));
+
+        if (total < 0) {
+            total *= -1;
+        }
     }
 
-    // FOR DEBUGGING REMOVE LATER:
-    // std::cout << "total : " << total << std::endl;
-
-    return total % slots;
+    return (int)(total % slots);
 }
 
 void HashTable::insertKey(std::string input) {
